@@ -1,9 +1,10 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"io"
+
+	flag "github.com/docker/docker/pkg/mflag"
 )
 
 // Exit codes are int values that represent an exit code for a particular error.
@@ -22,7 +23,7 @@ type CLI struct {
 // Run invokes the CLI with the given arguments.
 func (cli *CLI) Run(args []string) int {
 	var (
-		v bool
+		V bool
 
 		version bool
 	)
@@ -31,10 +32,8 @@ func (cli *CLI) Run(args []string) int {
 	flags := flag.NewFlagSet(Name, flag.ContinueOnError)
 	flags.SetOutput(cli.errStream)
 
-	flags.BoolVar(&v, "v", false, "verbose")
-	flags.BoolVar(&v, "v", false, "verbose(Short)")
-
-	flags.BoolVar(&version, "version", false, "Print version information and quit.")
+	flags.BoolVar(&V, []string{"V", "-verbose"}, false, "verbose")
+	flags.BoolVar(&version, []string{"v", "-version"}, false, "Print version information and quit.")
 
 	// Parse commandline flag
 	if err := flags.Parse(args[1:]); err != nil {
@@ -47,7 +46,8 @@ func (cli *CLI) Run(args []string) int {
 		return ExitCodeOK
 	}
 
-	_ = v
+	_ = V
+
 
 	return ExitCodeOK
 }

@@ -10,7 +10,7 @@ import (
 func TestRun_versionFlag(t *testing.T) {
 	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
 	cli := &CLI{outStream: outStream, errStream: errStream}
-	args := strings.Split("./git-prs -version", " ")
+	args := strings.Split("./git-prs --version", " ")
 
 	status := cli.Run(args)
 	if status != ExitCodeOK {
@@ -23,10 +23,10 @@ func TestRun_versionFlag(t *testing.T) {
 	}
 }
 
-func TestRun_vFlag(t *testing.T) {
+func TestRun_VFlag(t *testing.T) {
 	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
 	cli := &CLI{outStream: outStream, errStream: errStream}
-	args := strings.Split("./git-prs -v", " ")
+	args := strings.Split("./git-prs --verbose", " ")
 
 	status := cli.Run(args)
 	_ = status

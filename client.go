@@ -29,7 +29,7 @@ type Client struct {
 func (c *Client) newClientOAuth(token string) *github.Client {
 	// OAuth2 client
 	ts := oauth2.StaticTokenSource(
-		&oauth2.Token{AccessToken: token},
+		&oauth2.Token{AccessToken: c.Token},
 	)
 	tc := oauth2.NewClient(oauth2.NoContext, ts)
 

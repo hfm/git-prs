@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"io"
 
-	flag "github.com/docker/docker/pkg/mflag"
+	flag "github.com/tcnksm/mflag"
 )
 
 // Exit codes are int values that represent an exit code for a particular error.

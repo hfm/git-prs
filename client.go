@@ -16,7 +16,7 @@ const (
 type Client struct {
 	// Repository name
 	Owner string
-	Repo string
+	Repo  string
 
 	// API endpoint (Default: https://api.github.com)
 	API *url.URL
@@ -34,6 +34,7 @@ func (c *Client) newClientOAuth(token string) *github.Client {
 	tc := oauth2.NewClient(oauth2.NoContext, ts)
 
 	// GitHub API Client with OAuth
-	client:= github.NewClient(tc)
+	client := github.NewClient(tc)
 	return client
 }
+
